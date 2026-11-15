@@ -1,0 +1,197 @@
+
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Острів знань</title>
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      color: #28533f;
+      background: #fbfdf9;
+    }
+
+    header {
+      padding: 20px 6%;
+      background: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #e5eee5;
+    }
+
+    .logo { font-size: 24px; font-weight: bold; }
+    header a { color: #356e58; text-decoration: none; }
+
+    .hero {
+      margin: 30px auto;
+      padding: 45px;
+      max-width: 1200px;
+      min-height: 420px;
+      border-radius: 28px;
+      background: linear-gradient(120deg, #e9f8ec, #fff2df);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 25px;
+      flex-wrap: wrap;
+    }
+
+    .intro { flex: 1 1 300px; }
+
+    h1 {
+      font-size: clamp(38px, 5vw, 60px);
+      line-height: 1.1;
+    }
+
+    h1 span { color: #e18b55; }
+
+    .slogan { font-size: 19px; line-height: 1.5; }
+
+    .button {
+      display: inline-block;
+      padding: 15px 22px;
+      margin: 8px 5px 0 0;
+      border-radius: 30px;
+      background: #398b68;
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .button.light {
+      background: white;
+      color: #398b68;
+    }
+
+    .island {
+      flex: 1 1 300px;
+      min-height: 270px;
+      border-radius: 25px;
+      background: linear-gradient(#bde8e7 55%, #58b9b7 55%);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: clamp(45px, 7vw, 75px);
+      text-align: center;
+    }
+
+    .cards {
+      max-width: 1100px;
+      margin: 30px auto;
+      padding: 0 20px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .card {
+      padding: 25px;
+      border-radius: 22px;
+      min-height: 145px;
+    }
+
+    .card h2 { margin-bottom: 8px; }
+    .card p { line-height: 1.5; }
+
+    .mint { background: #e4f5e9; }
+    .lilac { background: #eee9fb; }
+    .peach { background: #fff0e3; }
+
+    .about {
+      max-width: 1050px;
+      margin: 30px auto;
+      padding: 25px;
+      background: white;
+      border-radius: 20px;
+      text-align: center;
+    }
+
+    footer {
+      padding: 25px;
+      text-align: center;
+      background: #f1f7f1;
+    }
+
+    @media (max-width: 700px) {
+      .hero { margin: 15px; padding: 25px; }
+      .cards { grid-template-columns: 1fr; }
+      header { padding: 15px; }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">🌴 Острів знань</div>
+  <a href="#teacher">Кабінет учителя</a>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="intro">
+      <p>Тут починаються маленькі й великі відкриття!</p>
+
+      <h1>
+        Вітаємо на<br>
+        <span>Острові знань!</span>
+      </h1>
+
+      <p class="slogan">
+        Великі відкриття починаються з маленьких кроків!
+      </p>
+
+      <a class="button" href="#adventures">
+        Вирушити на острів
+      </a>
+
+      <a class="button light" href="#about">
+        Що чекає на острові?
+      </a>
+    </div>
+
+    <div class="island">
+      🐯 🌴 🐨<br>
+      🏝️ 🐵 🌺
+    </div>
+  </section>
+
+  <section class="cards" id="adventures">
+    <article class="card mint">
+      <h2>📚 Навчання</h2>
+      <p>Цікаві відкриття та маленькі пригоди.</p>
+    </article>
+
+    <article class="card lilac">
+      <h2>🎮 Ігри</h2>
+      <p>Грай, досліджуй і пробуй знову!</p>
+    </article>
+
+    <article class="card peach">
+      <h2>🔎 Відкриття</h2>
+      <p>Кожен день — щось нове!</p>
+    </article>
+  </section>
+
+  <section class="about" id="about">
+    <h2>🧭 На тебе чекають пригоди!</h2>
+    <p>Обирай цікаві завдання, грай, твори й відкривай нове!</p>
+  </section>
+
+  <section class="about" id="teacher">
+    <h2>Кабінет учителя</h2>
+    <p>Незабаром тут з'явиться твій особистий робочий простір.</p>
+  </section>
+</main>
+
+<footer>
+  🌴 Острів знань · Навчатися цікаво!
+</footer>
+
+</body>
+</html>
