@@ -1,196 +1,83 @@
-
 <!DOCTYPE html>
 <html lang="uk">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Острів знань</title>
-  <style>
-    * { box-sizing: border-box; }
-
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      color: #28533f;
-      background: #fbfdf9;
-    }
-
-    header {
-      padding: 20px 6%;
-      background: white;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border-bottom: 1px solid #e5eee5;
-    }
-
-    .logo { font-size: 24px; font-weight: bold; }
-    header a { color: #356e58; text-decoration: none; }
-
-    .hero {
-      margin: 30px auto;
-      padding: 45px;
-      max-width: 1200px;
-      min-height: 420px;
-      border-radius: 28px;
-      background: linear-gradient(120deg, #e9f8ec, #fff2df);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 25px;
-      flex-wrap: wrap;
-    }
-
-    .intro { flex: 1 1 300px; }
-
-    h1 {
-      font-size: clamp(38px, 5vw, 60px);
-      line-height: 1.1;
-    }
-
-    h1 span { color: #e18b55; }
-
-    .slogan { font-size: 19px; line-height: 1.5; }
-
-    .button {
-      display: inline-block;
-      padding: 15px 22px;
-      margin: 8px 5px 0 0;
-      border-radius: 30px;
-      background: #398b68;
-      color: white;
-      text-decoration: none;
-      font-weight: bold;
-    }
-
-    .button.light {
-      background: white;
-      color: #398b68;
-    }
-
-    .island {
-      flex: 1 1 300px;
-      min-height: 270px;
-      border-radius: 25px;
-      background: linear-gradient(#bde8e7 55%, #58b9b7 55%);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-size: clamp(45px, 7vw, 75px);
-      text-align: center;
-    }
-
-    .cards {
-      max-width: 1100px;
-      margin: 30px auto;
-      padding: 0 20px;
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
-    }
-
-    .card {
-      padding: 25px;
-      border-radius: 22px;
-      min-height: 145px;
-    }
-
-    .card h2 { margin-bottom: 8px; }
-    .card p { line-height: 1.5; }
-
-    .mint { background: #e4f5e9; }
-    .lilac { background: #eee9fb; }
-    .peach { background: #fff0e3; }
-
-    .about {
-      max-width: 1050px;
-      margin: 30px auto;
-      padding: 25px;
-      background: white;
-      border-radius: 20px;
-      text-align: center;
-    }
-
-    footer {
-      padding: 25px;
-      text-align: center;
-      background: #f1f7f1;
-    }
-
-    @media (max-width: 700px) {
-      .hero { margin: 15px; padding: 25px; }
-      .cards { grid-template-columns: 1fr; }
-      header { padding: 15px; }
-    }
-  </style>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#e9f8ec"><title>Острів знань</title>
+<style>
+:root{--green:#398b68;--deep:#28533f;--mint:#e4f5e9;--lilac:#eee9fb;--peach:#fff0e3;--line:#e5eee5}
+*{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;color:var(--deep);background:#fbfdf9}button,input{font:inherit}
+header{padding:18px 6%;background:#fff;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--line);gap:15px}
+.logo{font-size:24px;font-weight:bold}a{color:var(--green);text-decoration:none}
+.hero{margin:30px auto;padding:42px;max-width:1200px;min-height:420px;border-radius:28px;background:linear-gradient(120deg,#e9f8ec,#fff2df);display:flex;align-items:center;justify-content:space-between;gap:25px;flex-wrap:wrap}
+.intro{flex:1 1 300px}h1{font-size:clamp(38px,5vw,60px);line-height:1.1;margin:14px 0}h1 span{color:#e18b55}.slogan{font-size:19px;line-height:1.5}
+.button{display:inline-block;padding:14px 21px;margin:8px 5px 0 0;border:0;border-radius:30px;background:var(--green);color:#fff;text-decoration:none;font-weight:bold;cursor:pointer}
+.button.light{background:#fff;color:var(--green);border:1px solid #dcebe0}.button:disabled{opacity:.6;cursor:wait}
+.island{flex:1 1 300px;min-height:220px;display:flex;justify-content:center;align-items:center}.island img{display:block;width:100%;height:auto;max-height:360px;object-fit:contain;border-radius:25px}
+.cards{max-width:1100px;margin:30px auto;padding:0 20px;display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.card{padding:25px;border-radius:22px;min-height:145px}.card h2{margin:0 0 8px}.card p{line-height:1.5;margin-bottom:0}
+.mint{background:var(--mint)}.lilac{background:var(--lilac)}.peach{background:var(--peach)}.about{max-width:1050px;margin:30px auto;padding:25px;background:#fff;border-radius:20px;text-align:center}
+footer{padding:25px;text-align:center;background:#f1f7f1;margin-top:35px}.hidden{display:none!important}
+.auth-wrap{max-width:520px;margin:35px auto;padding:0 18px}.panel{background:#fff;border:1px solid var(--line);border-radius:24px;padding:28px;box-shadow:0 8px 28px #28533f0c}
+.panel h2{margin-top:0}label{display:block;font-weight:bold;margin:15px 0 7px}input{width:100%;padding:13px 14px;border:1px solid #cbdccf;border-radius:12px;background:#fff;color:var(--deep)}
+input:focus{outline:2px solid #9bd3ae;border-color:var(--green)}.status{min-height:24px;margin:12px 0 0;color:#9b4b32;line-height:1.4}
+.dashboard{max-width:1200px;margin:28px auto;padding:0 20px}.dash-head{display:flex;align-items:center;justify-content:space-between;gap:15px;flex-wrap:wrap;background:linear-gradient(120deg,#e9f8ec,#fff2df);border-radius:24px;padding:25px}
+.dash-head h1{font-size:clamp(27px,4vw,40px);margin:0 0 8px}.dash-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:20px}
+.dash-card{border-radius:20px;padding:22px;min-height:150px}.dash-card h3{margin:0 0 10px;font-size:20px}.dash-card p{line-height:1.5;margin:0}
+.metric{font-size:34px;font-weight:bold;color:var(--green);margin:8px 0}.note{font-size:13px;color:#668071;line-height:1.45;margin-top:10px!important}
+.top-actions{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+@media(max-width:700px){.hero{margin:15px;padding:25px}.cards,.dash-grid{grid-template-columns:1fr}header{padding:15px}.panel{padding:22px}}
+</style>
 </head>
-
 <body>
-
-<header>
-  <div class="logo">🌴 Острів знань</div>
-  <a href="#teacher">Кабінет учителя</a>
-</header>
-
+<header><div class="logo">🌴 Острів знань</div><a href="#" id="teacherLink">Кабінет учителя</a></header>
 <main>
-  <section class="hero">
-    <div class="intro">
-      <p>Тут починаються маленькі й великі відкриття!</p>
-
-      <h1>
-        Вітаємо на<br>
-        <span>Острові знань!</span>
-      </h1>
-
-      <p class="slogan">
-        Великі відкриття починаються з маленьких кроків!
-      </p>
-
-      <a class="button" href="#adventures">
-        Вирушити на острів
-      </a>
-
-      <a class="button light" href="#about">
-        Що чекає на острові?
-      </a>
-    </div>
-
-    <div class="island">
-    <img src="ostriv-island.png" alt="Чарівний Острів знань" style="display:block; width:100%; height:auto; border-radius:25px;">
-    </div>
-  </section>
-
-  <section class="cards" id="adventures">
-    <article class="card mint">
-      <h2>📚 Навчання</h2>
-      <p>Цікаві відкриття та маленькі пригоди.</p>
-    </article>
-
-    <article class="card lilac">
-      <h2>🎮 Ігри</h2>
-      <p>Грай, досліджуй і пробуй знову!</p>
-    </article>
-
-    <article class="card peach">
-      <h2>🔎 Відкриття</h2>
-      <p>Кожен день — щось нове!</p>
-    </article>
-  </section>
-
-  <section class="about" id="about">
-    <h2>🧭 На тебе чекають пригоди!</h2>
-    <p>Обирай цікаві завдання, грай, твори й відкривай нове!</p>
-  </section>
-
-  <section class="about" id="teacher">
-    <h2>Кабінет учителя</h2>
-    <p>Незабаром тут з'явиться твій особистий робочий простір.</p>
-  </section>
-</main>
-
-<footer>
-  🌴 Острів знань · Навчатися цікаво!
-</footer>
-<script src="script.js"></script>
-</body>
-</html>
+<section id="homeView">
+<section class="hero"><div class="intro"><p>Тут починаються маленькі й великі відкриття!</p><h1>Вітаємо на<br><span>Острові знань!</span></h1>
+<p class="slogan">Великі відкриття починаються з маленьких кроків!</p><a class="button" href="#adventures">Вирушити на острів</a><a class="button light" href="#about">Що чекає на острові?</a></div>
+<div class="island"><img src="ostriv-island.png" alt="Чарівний Острів знань"></div></section>
+<section class="cards" id="adventures"><article class="card mint"><h2>📚 Навчання</h2><p>Цікаві відкриття та маленькі пригоди.</p></article><article class="card lilac"><h2>🎮 Ігри</h2><p>Грай, досліджуй і пробуй знову!</p></article><article class="card peach"><h2>🔎 Відкриття</h2><p>Кожен день — щось нове!</p></article></section>
+<section class="about" id="about"><h2>🧭 На тебе чекають пригоди!</h2><p>Обирай цікаві завдання, грай, твори й відкривай нове!</p></section>
+</section>
+<section id="loginView" class="auth-wrap hidden"><div class="panel"><p>🌴 Острів знань · Простір учителя</p><h2>Вхід до кабінету</h2>
+<p>Увійдіть за електронною поштою та паролем свого облікового запису.</p>
+<form id="loginForm"><label for="email">Електронна пошта</label><input id="email" type="email" autocomplete="username" required placeholder="Ваша електронна пошта">
+<label for="password">Пароль</label><input id="password" type="password" autocomplete="current-password" required placeholder="Ваш пароль">
+<button class="button" id="loginButton" type="submit">Увійти до кабінету</button><button class="button light" type="button" id="backHome">На головну</button></form>
+<p class="status" id="loginStatus" role="status" aria-live="polite"></p><p class="note">Реєстрація на сайті закрита. Доступ призначений для власника навчальної групи.</p></div></section>
+<section id="dashboardView" class="dashboard hidden"><div class="dash-head"><div><p>🌴 Особистий простір учителя</p><h1>Вітаємо, Тетяна Володимирівна!</h1><div id="groupName">Завантажуємо дані групи…</div></div>
+<div class="top-actions"><button class="button light" id="refreshDashboard">Оновити</button><button class="button" id="logoutButton">Вийти</button></div></div>
+<div class="dash-grid"><article class="dash-card mint"><h3>👧 Моя група</h3><div class="metric" id="childrenCount">—</div><p>Дітей у групі</p></article>
+<article class="dash-card lilac"><h3>📚 Заняття</h3><div class="metric">0</div><p>Підготовлені заняття</p><p class="note">Розділ буде підключено на наступному етапі.</p></article>
+<article class="dash-card peach"><h3>🎮 Ігри</h3><div class="metric">0</div><p>Навчальні ігри</p><p class="note">Тут з’являться ігри для дітей.</p></article>
+<article class="dash-card lilac"><h3>🖍️ Роботи дітей</h3><p>Перегляд і перевірка дитячих робіт.</p></article>
+<article class="dash-card mint"><h3>🍌 Нагороди острова</h3><p>Банани, відзнаки та історія нагород.</p></article>
+<article class="dash-card peach"><h3>🧭 Події острова</h3><p>Календар занять, свят і важливих подій.</p></article></div>
+<p class="note" id="dashboardStatus" role="status" aria-live="polite"></p></section>
+</main><footer>🌴 Острів знань · Навчатися цікаво!</footer>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+const SUPABASE_URL="https://ihflezshqjtwdmwvqcvi.supabase.co";
+const SUPABASE_PUBLISHABLE_KEY="sb_publishable_0aVHjb09aSiieOgdXm9qBg_joJDy3Ea";
+const supabaseClient=window.supabase.createClient(SUPABASE_URL,SUPABASE_PUBLISHABLE_KEY);
+const homeView=document.getElementById("homeView"),loginView=document.getElementById("loginView"),dashboardView=document.getElementById("dashboardView");
+const loginStatus=document.getElementById("loginStatus"),loginButton=document.getElementById("loginButton");
+function showView(view){homeView.classList.toggle("hidden",view!=="home");loginView.classList.toggle("hidden",view!=="login");dashboardView.classList.toggle("hidden",view!=="dashboard");window.scrollTo({top:0,behavior:"smooth"});}
+document.getElementById("teacherLink").addEventListener("click",async e=>{e.preventDefault();const {data:{session}}=await supabaseClient.auth.getSession();if(session){showView("dashboard");await loadDashboard();}else{loginStatus.textContent="";showView("login");}});
+document.getElementById("backHome").addEventListener("click",()=>showView("home"));
+document.getElementById("loginForm").addEventListener("submit",async e=>{e.preventDefault();loginButton.disabled=true;loginStatus.textContent="Перевіряємо дані для входу…";
+const email=document.getElementById("email").value.trim(),password=document.getElementById("password").value;
+const {data,error}=await supabaseClient.auth.signInWithPassword({email,password});loginButton.disabled=false;
+if(error){loginStatus.textContent="Не вдалося увійти. Перевір електронну пошту й пароль. Якщо помилка повторюється, перевір налаштування облікового запису Supabase.";return;}
+if(data.session){loginStatus.textContent="";showView("dashboard");await loadDashboard();}});
+async function loadDashboard(){const status=document.getElementById("dashboardStatus");status.textContent="Завантажуємо дані твоєї групи…";document.getElementById("childrenCount").textContent="—";
+const {data:groups,error:groupError}=await supabaseClient.from("study_groups").select("id,group_name,max_children").limit(1);
+if(groupError||!groups||!groups.length){document.getElementById("groupName").textContent="Не вдалося завантажити групу. Перевір політики доступу study_groups.";status.textContent=groupError?"Помилка завантаження групи: "+groupError.message:"Групу не знайдено.";return;}
+const group=groups[0];document.getElementById("groupName").textContent="Група: "+group.group_name+" · Максимум дітей: "+group.max_children;
+const {count,error:childrenError}=await supabaseClient.from("child_profiles").select("id",{count:"exact",head:true}).eq("group_id",group.id).eq("is_active",true);
+if(childrenError){document.getElementById("childrenCount").textContent="—";status.textContent="Групу завантажено. Кількість дітей поки недоступна: "+childrenError.message;}
+else{document.getElementById("childrenCount").textContent=count??0;status.textContent="Дані групи успішно завантажено.";}}
+document.getElementById("refreshDashboard").addEventListener("click",loadDashboard);
+document.getElementById("logoutButton").addEventListener("click",async()=>{await supabaseClient.auth.signOut();showView("home");});
+supabaseClient.auth.onAuthStateChange((_event,session)=>{if(session&&!dashboardView.classList.contains("hidden"))loadDashboard();});
+(async()=>{const {data:{session}}=await supabaseClient.auth.getSession();if(session){showView("dashboard");await loadDashboard();}})();
+</script>
+</body></html>
