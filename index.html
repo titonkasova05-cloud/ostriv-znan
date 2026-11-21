@@ -24,18 +24,54 @@ input:focus{outline:2px solid #9bd3ae;border-color:var(--green)}.status{min-heig
 .dash-card{border-radius:20px;padding:22px;min-height:150px}.dash-card h3{margin:0 0 10px;font-size:20px}.dash-card p{line-height:1.5;margin:0}
 .metric{font-size:34px;font-weight:bold;color:var(--green);margin:8px 0}.note{font-size:13px;color:#668071;line-height:1.45;margin-top:10px!important}
 .top-actions{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
-@media(max-width:700px){.hero{margin:15px;padding:25px}.cards,.dash-grid{grid-template-columns:1fr}header{padding:15px}.panel{padding:22px}}
+.games-page{max-width:1200px;margin:30px auto;padding:0 20px}
+.games-hero{padding:30px;border-radius:26px;background:linear-gradient(120deg,#e9f8ec,#f0eaff,#fff2df);margin-bottom:22px}
+.games-hero h1{font-size:clamp(30px,4vw,44px);margin:8px 0}
+.games-hero p{line-height:1.55;max-width:760px}
+.games-toolbar{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin:18px 0}
+.games-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.game-category{border:1px solid var(--line);border-radius:22px;overflow:hidden;background:#fff;box-shadow:0 5px 18px #28533f08;display:flex;flex-direction:column;min-height:250px}
+.category-art{min-height:112px;display:flex;align-items:center;justify-content:center;font-size:58px}
+.category-body{padding:19px;display:flex;flex-direction:column;flex:1}
+.category-body h2{font-size:20px;margin:0 0 8px}
+.category-body p{line-height:1.45;margin:0 0 15px;color:#587363;flex:1}
+.category-meta{font-size:12px;color:#718879;margin-bottom:12px}
+.category-button{align-self:flex-start;border:0;border-radius:22px;padding:10px 16px;background:var(--green);color:#fff;font-weight:bold;cursor:pointer}
+.category-button:disabled{background:#dce9df;color:#55715f;cursor:default}
+.games-back{margin:0 0 16px}
+.games-footnote{background:#fff;border:1px dashed #cbdccf;border-radius:18px;padding:17px;line-height:1.5;margin-top:22px}
+@media(max-width:850px){.games-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:700px){.hero{margin:15px;padding:25px}.cards,.dash-grid,.games-grid{grid-template-columns:1fr}header{padding:15px}.panel{padding:22px}.games-page{padding:0 14px}.games-hero{padding:22px}}
 </style>
 </head>
 <body>
-<header><div class="logo">🌴 Острів знань</div><a href="#" id="teacherLink">Кабінет учителя</a></header>
+<header><div class="logo">🌴 Острів знань</div><nav class="top-actions"><a href="#" id="gamesLink">Навчальні ігри</a><a href="#" id="teacherLink">Кабінет учителя</a></nav></header>
 <main>
 <section id="homeView">
 <section class="hero"><div class="intro"><p>Тут починаються маленькі й великі відкриття!</p><h1>Вітаємо на<br><span>Острові знань!</span></h1>
 <p class="slogan">Великі відкриття починаються з маленьких кроків!</p><a class="button" href="#adventures">Вирушити на острів</a><a class="button light" href="#about">Що чекає на острові?</a></div>
 <div class="island"><img src="ostriv-island.png" alt="Чарівний Острів знань"></div></section>
-<section class="cards" id="adventures"><article class="card mint"><h2>📚 Навчання</h2><p>Цікаві відкриття та маленькі пригоди.</p></article><article class="card lilac"><h2>🎮 Ігри</h2><p>Грай, досліджуй і пробуй знову!</p></article><article class="card peach"><h2>🔎 Відкриття</h2><p>Кожен день — щось нове!</p></article></section>
+<section class="cards" id="adventures"><article class="card mint"><h2>📚 Навчання</h2><p>Цікаві відкриття та маленькі пригоди.</p></article><article class="card lilac"><h2>🎮 Навчальні ігри</h2><p>Обирай напрям і вирушай у маленьку пригоду.</p><a class="button" href="#" id="homeGamesButton">Обрати ігри</a></article><article class="card peach"><h2>🔎 Відкриття</h2><p>Кожен день — щось нове!</p></article></section>
 <section class="about" id="about"><h2>🧭 На тебе чекають пригоди!</h2><p>Обирай цікаві завдання, грай, твори й відкривай нове!</p></section>
+</section>
+<section id="gamesView" class="games-page hidden">
+  <button class="button light games-back" id="gamesBackHome" type="button">← На головну</button>
+  <div class="games-hero">
+    <p>🌴 Острів знань · Ігрова галявина</p>
+    <h1>Навчальні ігри</h1>
+    <p>Обирай свою галявину для відкриттів! Тут збиратимуться ігри для дітей 5–6 років. Кожен розділ матиме власні ігри, зрозумілі правила та дружні підказки.</p>
+    <strong>Великі відкриття починаються з маленьких кроків!</strong>
+  </div>
+  <div class="games-toolbar"><h2>Обери розділ</h2><span class="note">Для дітей 5–6 років</span></div>
+  <div class="games-grid">
+    <article class="game-category"><div class="category-art mint">🔤</div><div class="category-body"><h2>Мовленнєві ігри</h2><p>Звуки, слова, мовлення, складання розповідей та розвиток словника.</p><div class="category-meta">Мова та спілкування</div><button class="category-button" disabled>Ігри готуються</button></div></article>
+    <article class="game-category"><div class="category-art lilac">🔢</div><div class="category-body"><h2>Математичні ігри</h2><p>Лічба, числа, порівняння, геометричні фігури та просторові уявлення.</p><div class="category-meta">Логіко-математичний розвиток</div><button class="category-button" disabled>Ігри готуються</button></div></article>
+    <article class="game-category"><div class="category-art peach">🌿</div><div class="category-body"><h2>Пізнаємо світ</h2><p>Тварини, рослини, пори року, явища природи та навколишній світ.</p><div class="category-meta">Дослідження та відкриття</div><button class="category-button" disabled>Ігри готуються</button></div></article>
+    <article class="game-category"><div class="category-art peach">🧩</div><div class="category-body"><h2>Логічні ігри</h2><p>Увага, пам’ять, класифікація, послідовності та пошук закономірностей.</p><div class="category-meta">Мислення та увага</div><button class="category-button" disabled>Ігри готуються</button></div></article>
+    <article class="game-category"><div class="category-art lilac">🎨</div><div class="category-body"><h2>Творча майстерня</h2><p>Фантазія, кольори, творчі вибори та завдання з відкритими відповідями.</p><div class="category-meta">Уява та творчість</div><button class="category-button" disabled>Ігри готуються</button></div></article>
+    <article class="game-category"><div class="category-art mint">🎵</div><div class="category-body"><h2>Руханки та музика</h2><p>Рухливі паузи, ритм, музичні завдання та веселі вправи.</p><div class="category-meta">Рух і відпочинок</div><button class="category-button" disabled>Ігри готуються</button></div></article>
+  </div>
+  <div class="games-footnote">💡 <strong>Зверни увагу:</strong> зараз ми створили структуру бібліотеки. Ігри додаватимемо поступово — твої готові матеріали можна буде розмістити у відповідних розділах.</div>
 </section>
 <section id="loginView" class="auth-wrap hidden"><div class="panel"><p>🌴 Острів знань · Простір учителя</p><h2>Вхід до кабінету</h2>
 <p>Увійдіть за електронною поштою та паролем свого облікового запису.</p>
@@ -44,7 +80,7 @@ input:focus{outline:2px solid #9bd3ae;border-color:var(--green)}.status{min-heig
 <button class="button" id="loginButton" type="submit">Увійти до кабінету</button><button class="button light" type="button" id="backHome">На головну</button></form>
 <p class="status" id="loginStatus" role="status" aria-live="polite"></p><p class="note">Реєстрація на сайті закрита. Доступ призначений для власника навчальної групи.</p></div></section>
 <section id="dashboardView" class="dashboard hidden"><div class="dash-head"><div><p>🌴 Особистий простір учителя</p><h1>Вітаємо, Тетяна Володимирівна!</h1><div id="groupName">Завантажуємо дані групи…</div></div>
-<div class="top-actions"><button class="button light" id="refreshDashboard">Оновити</button><button class="button" id="logoutButton">Вийти</button></div></div>
+<div class="top-actions"><button class="button light" id="openGamesFromDashboard">🎮 Навчальні ігри</button><button class="button light" id="refreshDashboard">Оновити</button><button class="button" id="logoutButton">Вийти</button></div></div>
 <div class="dash-grid"><article class="dash-card mint"><h3>👧 Моя група</h3><div class="metric" id="childrenCount">—</div><p>Дітей у групі</p></article>
 <article class="dash-card lilac"><h3>📚 Заняття</h3><div class="metric">0</div><p>Підготовлені заняття</p><p class="note">Розділ буде підключено на наступному етапі.</p></article>
 <article class="dash-card peach"><h3>🎮 Ігри</h3><div class="metric">0</div><p>Навчальні ігри</p><p class="note">Тут з’являться ігри для дітей.</p></article>
@@ -58,11 +94,14 @@ input:focus{outline:2px solid #9bd3ae;border-color:var(--green)}.status{min-heig
 const SUPABASE_URL="https://ihflezshqjtwdmwvqcvi.supabase.co";
 const SUPABASE_PUBLISHABLE_KEY="sb_publishable_0aVHjb09aSiieOgdXm9qBg_joJDy3Ea";
 const supabaseClient=window.supabase.createClient(SUPABASE_URL,SUPABASE_PUBLISHABLE_KEY);
-const homeView=document.getElementById("homeView"),loginView=document.getElementById("loginView"),dashboardView=document.getElementById("dashboardView");
+const homeView=document.getElementById("homeView"),loginView=document.getElementById("loginView"),dashboardView=document.getElementById("dashboardView"),gamesView=document.getElementById("gamesView");
 const loginStatus=document.getElementById("loginStatus"),loginButton=document.getElementById("loginButton");
-function showView(view){homeView.classList.toggle("hidden",view!=="home");loginView.classList.toggle("hidden",view!=="login");dashboardView.classList.toggle("hidden",view!=="dashboard");window.scrollTo({top:0,behavior:"smooth"});}
+function showView(view){homeView.classList.toggle("hidden",view!=="home");loginView.classList.toggle("hidden",view!=="login");dashboardView.classList.toggle("hidden",view!=="dashboard");gamesView.classList.toggle("hidden",view!=="games");window.scrollTo({top:0,behavior:"smooth"});}
 document.getElementById("teacherLink").addEventListener("click",async e=>{e.preventDefault();const {data:{session}}=await supabaseClient.auth.getSession();if(session){showView("dashboard");await loadDashboard();}else{loginStatus.textContent="";showView("login");}});
 document.getElementById("backHome").addEventListener("click",()=>showView("home"));
+document.getElementById("gamesLink").addEventListener("click",e=>{e.preventDefault();showView("games");});
+document.getElementById("homeGamesButton").addEventListener("click",e=>{e.preventDefault();showView("games");});
+document.getElementById("gamesBackHome").addEventListener("click",()=>showView("home"));
 document.getElementById("loginForm").addEventListener("submit",async e=>{e.preventDefault();loginButton.disabled=true;loginStatus.textContent="Перевіряємо дані для входу…";
 const email=document.getElementById("email").value.trim(),password=document.getElementById("password").value;
 const {data,error}=await supabaseClient.auth.signInWithPassword({email,password});loginButton.disabled=false;
@@ -75,6 +114,7 @@ const group=groups[0];document.getElementById("groupName").textContent="Груп
 const {count,error:childrenError}=await supabaseClient.from("child_profiles").select("id",{count:"exact",head:true}).eq("group_id",group.id).eq("is_active",true);
 if(childrenError){document.getElementById("childrenCount").textContent="—";status.textContent="Групу завантажено. Кількість дітей поки недоступна: "+childrenError.message;}
 else{document.getElementById("childrenCount").textContent=count??0;status.textContent="Дані групи успішно завантажено.";}}
+document.getElementById("openGamesFromDashboard").addEventListener("click",()=>showView("games"));
 document.getElementById("refreshDashboard").addEventListener("click",loadDashboard);
 document.getElementById("logoutButton").addEventListener("click",async()=>{await supabaseClient.auth.signOut();showView("home");});
 supabaseClient.auth.onAuthStateChange((_event,session)=>{if(session&&!dashboardView.classList.contains("hidden"))loadDashboard();});
