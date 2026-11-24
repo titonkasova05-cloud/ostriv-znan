@@ -40,6 +40,23 @@ input:focus{outline:2px solid #9bd3ae;border-color:var(--green)}.status{min-heig
 .category-button:disabled{background:#dce9df;color:#55715f;cursor:default}
 .games-back{margin:0 0 16px}
 .games-footnote{background:#fff;border:1px dashed #cbdccf;border-radius:18px;padding:17px;line-height:1.5;margin-top:22px}
+
+.library-page{max-width:1100px;margin:28px auto;padding:0 20px}
+.library-hero{padding:26px;border-radius:24px;background:linear-gradient(120deg,#e9f8ec,#fff2df);margin-bottom:20px}
+.library-layout{display:grid;grid-template-columns:minmax(280px,0.85fr) minmax(0,1.4fr);gap:18px;align-items:start}
+.library-panel{background:#fff;border:1px solid var(--line);border-radius:20px;padding:22px;box-shadow:0 5px 18px #28533f08}
+.library-panel h2{margin-top:0}
+.library-form label{margin-top:12px}
+.library-form textarea{width:100%;min-height:90px;padding:12px;border:1px solid #cbdccf;border-radius:12px;font:inherit;resize:vertical}
+.lesson-list{display:grid;gap:12px}
+.lesson-item{padding:17px;border:1px solid var(--line);border-radius:16px;background:#fbfdf9}
+.lesson-item h3{margin:0 0 6px;color:var(--deep)}
+.lesson-date{font-size:13px;color:#718879;margin-bottom:9px}
+.lesson-description{white-space:pre-wrap;line-height:1.5}
+.lesson-link{display:inline-block;margin-top:12px;font-weight:bold}
+.library-empty{padding:22px;border:1px dashed #cbdccf;border-radius:16px;color:#668071;text-align:center}
+@media(max-width:760px){.library-layout{grid-template-columns:1fr}}
+
 @media(max-width:850px){.games-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:700px){.hero{margin:15px;padding:25px}.cards,.dash-grid,.games-grid{grid-template-columns:1fr}header{padding:15px}.panel{padding:22px}.games-page{padding:0 14px}.games-hero{padding:22px}}
 </style>
@@ -73,6 +90,23 @@ input:focus{outline:2px solid #9bd3ae;border-color:var(--green)}.status{min-heig
   </div>
   <div class="games-footnote">💡 <strong>Зверни увагу:</strong> зараз ми створили структуру бібліотеки. Ігри додаватимемо поступово — твої готові матеріали можна буде розмістити у відповідних розділах.</div>
 </section>
+<section id="libraryView" class="library-page hidden">
+  <button class="button light games-back" id="libraryBackDashboard" type="button">← До кабінету</button>
+  <div class="library-hero"><p>🌴 Острів знань · Простір учителя</p><h1>📚 Бібліотека занять</h1><p>Зберігай проведені заняття та посилання на записи уроків в одному місці.</p></div>
+  <div class="library-layout">
+    <section class="library-panel"><h2>➕ Додати заняття</h2>
+      <form id="lessonForm" class="library-form">
+        <label for="lessonTitle">Назва заняття</label><input id="lessonTitle" maxlength="160" required placeholder="Наприклад: Вивчаємо букву А">
+        <label for="lessonDate">Дата проведення</label><input id="lessonDate" type="date" required>
+        <label for="lessonDescription">Про заняття</label><textarea id="lessonDescription" maxlength="2000" placeholder="Коротко: що сьогодні вивчали та робили"></textarea>
+        <label for="lessonVideo">Посилання на запис уроку</label><input id="lessonVideo" type="url" placeholder="https://...">
+        <button class="button" id="saveLessonButton" type="submit">Зберегти заняття</button>
+        <p class="status" id="lessonStatus" role="status" aria-live="polite"></p>
+      </form>
+    </section>
+    <section class="library-panel"><h2>🗂️ Збережені заняття</h2><div id="lessonList" class="lesson-list"><div class="library-empty">Завантажуємо бібліотеку…</div></div></section>
+  </div>
+</section>
 <section id="loginView" class="auth-wrap hidden"><div class="panel"><p>🌴 Острів знань · Простір учителя</p><h2>Вхід до кабінету</h2>
 <p>Увійдіть за електронною поштою та паролем свого облікового запису.</p>
 <form id="loginForm"><label for="email">Електронна пошта</label><input id="email" type="email" autocomplete="username" required placeholder="Ваша електронна пошта">
@@ -80,9 +114,9 @@ input:focus{outline:2px solid #9bd3ae;border-color:var(--green)}.status{min-heig
 <button class="button" id="loginButton" type="submit">Увійти до кабінету</button><button class="button light" type="button" id="backHome">На головну</button></form>
 <p class="status" id="loginStatus" role="status" aria-live="polite"></p><p class="note">Реєстрація на сайті закрита. Доступ призначений для власника навчальної групи.</p></div></section>
 <section id="dashboardView" class="dashboard hidden"><div class="dash-head"><div><p>🌴 Особистий простір учителя</p><h1>Вітаємо, Тетяна Володимирівна!</h1><div id="groupName">Завантажуємо дані групи…</div></div>
-<div class="top-actions"><button class="button light" id="openGamesFromDashboard">🎮 Навчальні ігри</button><button class="button light" id="refreshDashboard">Оновити</button><button class="button" id="logoutButton">Вийти</button></div></div>
+<div class="top-actions"><button class="button light" id="openLibraryFromDashboard">📚 Бібліотека занять</button><button class="button light" id="openGamesFromDashboard">🎮 Навчальні ігри</button><button class="button light" id="refreshDashboard">Оновити</button><button class="button" id="logoutButton">Вийти</button></div></div>
 <div class="dash-grid"><article class="dash-card mint"><h3>👧 Моя група</h3><div class="metric" id="childrenCount">—</div><p>Дітей у групі</p></article>
-<article class="dash-card lilac"><h3>📚 Заняття</h3><div class="metric">0</div><p>Підготовлені заняття</p><p class="note">Розділ буде підключено на наступному етапі.</p></article>
+<article class="dash-card lilac"><h3>📚 Заняття</h3><div class="metric" id="lessonsCount">0</div><p>Збережені заняття</p><button class="button light" id="openLibraryCard">Відкрити бібліотеку</button></article>
 <article class="dash-card peach"><h3>🎮 Ігри</h3><div class="metric">0</div><p>Навчальні ігри</p><p class="note">Тут з’являться ігри для дітей.</p></article>
 <article class="dash-card lilac"><h3>🖍️ Роботи дітей</h3><p>Перегляд і перевірка дитячих робіт.</p></article>
 <article class="dash-card mint"><h3>🍌 Нагороди острова</h3><p>Банани, відзнаки та історія нагород.</p></article>
@@ -94,9 +128,9 @@ input:focus{outline:2px solid #9bd3ae;border-color:var(--green)}.status{min-heig
 const SUPABASE_URL="https://ihflezshqjtwdmwvqcvi.supabase.co";
 const SUPABASE_PUBLISHABLE_KEY="sb_publishable_0aVHjb09aSiieOgdXm9qBg_joJDy3Ea";
 const supabaseClient=window.supabase.createClient(SUPABASE_URL,SUPABASE_PUBLISHABLE_KEY);
-const homeView=document.getElementById("homeView"),loginView=document.getElementById("loginView"),dashboardView=document.getElementById("dashboardView"),gamesView=document.getElementById("gamesView");
+const homeView=document.getElementById("homeView"),loginView=document.getElementById("loginView"),dashboardView=document.getElementById("dashboardView"),gamesView=document.getElementById("gamesView"),libraryView=document.getElementById("libraryView");
 const loginStatus=document.getElementById("loginStatus"),loginButton=document.getElementById("loginButton");
-function showView(view){homeView.classList.toggle("hidden",view!=="home");loginView.classList.toggle("hidden",view!=="login");dashboardView.classList.toggle("hidden",view!=="dashboard");gamesView.classList.toggle("hidden",view!=="games");window.scrollTo({top:0,behavior:"smooth"});}
+function showView(view){homeView.classList.toggle("hidden",view!=="home");loginView.classList.toggle("hidden",view!=="login");dashboardView.classList.toggle("hidden",view!=="dashboard");gamesView.classList.toggle("hidden",view!=="games");libraryView.classList.toggle("hidden",view!=="library");window.scrollTo({top:0,behavior:"smooth"});}
 document.getElementById("teacherLink").addEventListener("click",async e=>{e.preventDefault();const {data:{session}}=await supabaseClient.auth.getSession();if(session){showView("dashboard");await loadDashboard();}else{loginStatus.textContent="";showView("login");}});
 document.getElementById("backHome").addEventListener("click",()=>showView("home"));
 document.getElementById("gamesLink").addEventListener("click",e=>{e.preventDefault();showView("games");});
@@ -110,10 +144,37 @@ if(data.session){loginStatus.textContent="";showView("dashboard");await loadDash
 async function loadDashboard(){const status=document.getElementById("dashboardStatus");status.textContent="Завантажуємо дані твоєї групи…";document.getElementById("childrenCount").textContent="—";
 const {data:groups,error:groupError}=await supabaseClient.from("study_groups").select("id,group_name,max_children").limit(1);
 if(groupError||!groups||!groups.length){document.getElementById("groupName").textContent="Не вдалося завантажити групу. Перевір політики доступу study_groups.";status.textContent=groupError?"Помилка завантаження групи: "+groupError.message:"Групу не знайдено.";return;}
-const group=groups[0];document.getElementById("groupName").textContent="Група: "+group.group_name+" · Максимум дітей: "+group.max_children;
+const group=groups[0];currentGroupId=group.id;document.getElementById("groupName").textContent="Група: "+group.group_name+" · Максимум дітей: "+group.max_children;
 const {count,error:childrenError}=await supabaseClient.from("child_profiles").select("id",{count:"exact",head:true}).eq("group_id",group.id).eq("is_active",true);
 if(childrenError){document.getElementById("childrenCount").textContent="—";status.textContent="Групу завантажено. Кількість дітей поки недоступна: "+childrenError.message;}
 else{document.getElementById("childrenCount").textContent=count??0;status.textContent="Дані групи успішно завантажено.";}}
+
+let currentGroupId=null;
+async function openLibrary(){showView("library");document.getElementById("lessonStatus").textContent="";await loadLessons();}
+async function loadLessons(){
+ const list=document.getElementById("lessonList");list.innerHTML='<div class="library-empty">Завантажуємо заняття…</div>';
+ if(!currentGroupId){list.innerHTML='<div class="library-empty">Спочатку завантаж групу в кабінеті вчителя.</div>';return;}
+ const {data,error}=await supabaseClient.from("lessons").select("id,title,lesson_date,description,video_url,created_at").eq("group_id",currentGroupId).order("lesson_date",{ascending:false}).order("created_at",{ascending:false});
+ if(error){list.innerHTML='<div class="library-empty">Не вдалося завантажити бібліотеку. Перевір, чи створена таблиця lessons у Supabase.</div>';document.getElementById("lessonStatus").textContent="Помилка: "+error.message;return;}
+ document.getElementById("lessonsCount").textContent=data.length;
+ if(!data.length){list.innerHTML='<div class="library-empty">Тут поки немає занять. Додай перше заняття за допомогою форми.</div>';return;}
+ list.innerHTML=data.map(item=>{const date=new Date(item.lesson_date+"T00:00:00").toLocaleDateString("uk-UA");const desc=item.description?`<p class="lesson-description">${escapeLessonText(item.description)}</p>`:"";const link=item.video_url?`<a class="lesson-link" href="${escapeLessonAttr(item.video_url)}" target="_blank" rel="noopener noreferrer">▶ Переглянути запис уроку</a>`:'<p class="note">Запис уроку ще не додано.</p>';return `<article class="lesson-item"><h3>${escapeLessonText(item.title)}</h3><div class="lesson-date">${date}</div>${desc}${link}</article>`;}).join("");
+}
+function escapeLessonText(value){return String(value??"").replace(/[&<>"']/g,ch=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[ch]));}
+function escapeLessonAttr(value){return escapeLessonText(value);}
+document.getElementById("lessonForm").addEventListener("submit",async e=>{
+ e.preventDefault();const button=document.getElementById("saveLessonButton"),status=document.getElementById("lessonStatus");
+ if(!currentGroupId){status.textContent="Не знайдено навчальну групу. Повернися до кабінету й онови дані.";return;}
+ const video=document.getElementById("lessonVideo").value.trim();if(video&&!/^https:\/\//i.test(video)){status.textContent="Для запису уроку вкажи безпечне посилання, що починається з https://";return;}
+ button.disabled=true;status.textContent="Зберігаємо заняття…";
+ const payload={group_id:currentGroupId,title:document.getElementById("lessonTitle").value.trim(),lesson_date:document.getElementById("lessonDate").value,description:document.getElementById("lessonDescription").value.trim()||null,video_url:video||null};
+ const {error}=await supabaseClient.from("lessons").insert(payload);button.disabled=false;
+ if(error){status.textContent="Не вдалося зберегти: "+error.message;return;}
+ document.getElementById("lessonForm").reset();status.textContent="Заняття збережено в бібліотеці.";await loadLessons();
+});
+document.getElementById("openLibraryFromDashboard").addEventListener("click",openLibrary);
+document.getElementById("openLibraryCard").addEventListener("click",openLibrary);
+document.getElementById("libraryBackDashboard").addEventListener("click",async()=>{showView("dashboard");await loadDashboard();});
 document.getElementById("openGamesFromDashboard").addEventListener("click",()=>showView("games"));
 document.getElementById("refreshDashboard").addEventListener("click",loadDashboard);
 document.getElementById("logoutButton").addEventListener("click",async()=>{await supabaseClient.auth.signOut();showView("home");});
