@@ -59,10 +59,25 @@ input:focus{outline:2px solid #9bd3ae;border-color:var(--green)}.status{min-heig
 
 @media(max-width:850px){.games-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:700px){.hero{margin:15px;padding:25px}.cards,.dash-grid,.games-grid{grid-template-columns:1fr}header{padding:15px}.panel{padding:22px}.games-page{padding:0 14px}.games-hero{padding:22px}}
+
+.child-page{max-width:1100px;margin:28px auto;padding:0 20px}
+.child-hero{padding:28px;border-radius:26px;background:linear-gradient(120deg,#e9f8ec,#f0eaff,#fff2df);text-align:center;margin-bottom:20px}
+.child-hero h1{font-size:clamp(30px,4vw,44px);margin:8px 0}
+.child-hero p{line-height:1.55}
+.avatar-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+.avatar-card{border:2px solid #e5eee5;border-radius:20px;background:#fff;padding:16px 10px;text-align:center;cursor:pointer;transition:transform .15s,border-color .15s,box-shadow .15s;color:var(--deep)}
+.avatar-card:hover{transform:translateY(-3px);box-shadow:0 7px 18px #28533f12}
+.avatar-card.selected{border-color:var(--green);background:#effaf1;box-shadow:0 0 0 3px #398b6820}
+.avatar-picture{font-size:54px;line-height:1.35}
+.avatar-name{font-weight:bold;margin-top:5px}
+.avatar-actions{text-align:center;margin:22px 0}
+.avatar-status{min-height:25px;text-align:center;color:var(--green);font-weight:bold}
+@media(max-width:700px){.avatar-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
 </style>
 </head>
 <body>
-<header><div class="logo">🌴 Острів знань</div><nav class="top-actions"><a href="#" id="gamesLink">Навчальні ігри</a><a href="#" id="teacherLink">Кабінет учителя</a></nav></header>
+<header><div class="logo">🌴 Острів знань</div><nav class="top-actions"><a href="#" id="gamesLink">Навчальні ігри</a><a href="#" id="childLink">Для дітей</a><a href="#" id="teacherLink">Кабінет учителя</a></nav></header>
 <main>
 <section id="homeView">
 <section class="hero"><div class="intro"><p>Тут починаються маленькі й великі відкриття!</p><h1>Вітаємо на<br><span>Острові знань!</span></h1>
@@ -107,6 +122,35 @@ input:focus{outline:2px solid #9bd3ae;border-color:var(--green)}.status{min-heig
     <section class="library-panel"><h2>🗂️ Збережені заняття</h2><div id="lessonList" class="lesson-list"><div class="library-empty">Завантажуємо бібліотеку…</div></div></section>
   </div>
 </section>
+
+<section id="childView" class="child-page hidden">
+  <button class="button light games-back" id="childBackHome" type="button">← На головну</button>
+  <div class="child-hero">
+    <p>🌴 Острів знань · Дитячий простір</p>
+    <h1>Обери друга для пригод!</h1>
+    <p>Обери друга, з яким вирушиш у пригоди на острові. Натисни на одного з вільних друзів.</p>
+  </div>
+  <div class="avatar-grid" id="avatarGrid" aria-label="Обери свого друга">
+    <button class="avatar-card" type="button" data-avatar="Мавпеня"><div class="avatar-picture">🐵</div><div class="avatar-name">Друг 1 · Мавпеня</div></button>
+    <button class="avatar-card" type="button" data-avatar="Тигреня"><div class="avatar-picture">🐯</div><div class="avatar-name">Друг 2 · Тигреня</div></button>
+    <button class="avatar-card" type="button" data-avatar="Коала"><div class="avatar-picture">🐨</div><div class="avatar-name">Друг 3 · Коала</div></button>
+    <button class="avatar-card" type="button" data-avatar="Єнот"><div class="avatar-picture">🦝</div><div class="avatar-name">Друг 4 · Єнот</div></button>
+    <button class="avatar-card" type="button" data-avatar="Черепашка"><div class="avatar-picture">🐢</div><div class="avatar-name">Друг 5 · Черепашка</div></button>
+    <button class="avatar-card" type="button" data-avatar="Кенгуру"><div class="avatar-picture">🦘</div><div class="avatar-name">Друг 6 · Кенгуру</div></button>
+    <button class="avatar-card" type="button" data-avatar="Папуга"><div class="avatar-picture">🦜</div><div class="avatar-name">Друг 7 · Папуга</div></button>
+    <button class="avatar-card" type="button" data-avatar="Левеня"><div class="avatar-picture">🦁</div><div class="avatar-name">Друг 8 · Левеня</div></button>
+    <button class="avatar-card" type="button" data-avatar="Зебра"><div class="avatar-picture">🦓</div><div class="avatar-name">Друг 9 · Зебра</div></button>
+    <button class="avatar-card" type="button" data-avatar="Бегемотик"><div class="avatar-picture">🦛</div><div class="avatar-name">Друг 10 · Бегемотик</div></button>
+    <button class="avatar-card" type="button" data-avatar="Пінгвін"><div class="avatar-picture">🐧</div><div class="avatar-name">Друг 11 · Пінгвін</div></button>
+    <button class="avatar-card" type="button" data-avatar="Жирафа"><div class="avatar-picture">🦒</div><div class="avatar-name">Друг 12 · Жирафа</div></button>
+  </div>
+  <div class="avatar-actions">
+    <button class="button" id="confirmAvatar" type="button" disabled>Обрати друга</button>
+    <button class="button light" id="closeAvatar" type="button">Закрити</button>
+  </div>
+  <p class="avatar-status" id="avatarStatus" role="status" aria-live="polite">Поки що це прототип: вибір не зберігається.</p>
+</section>
+
 <section id="loginView" class="auth-wrap hidden"><div class="panel"><p>🌴 Острів знань · Простір учителя</p><h2>Вхід до кабінету</h2>
 <p>Увійдіть за електронною поштою та паролем свого облікового запису.</p>
 <form id="loginForm"><label for="email">Електронна пошта</label><input id="email" type="email" autocomplete="username" required placeholder="Ваша електронна пошта">
@@ -128,9 +172,27 @@ input:focus{outline:2px solid #9bd3ae;border-color:var(--green)}.status{min-heig
 const SUPABASE_URL="https://ihflezshqjtwdmwvqcvi.supabase.co";
 const SUPABASE_PUBLISHABLE_KEY="sb_publishable_0aVHjb09aSiieOgdXm9qBg_joJDy3Ea";
 const supabaseClient=window.supabase.createClient(SUPABASE_URL,SUPABASE_PUBLISHABLE_KEY);
-const homeView=document.getElementById("homeView"),loginView=document.getElementById("loginView"),dashboardView=document.getElementById("dashboardView"),gamesView=document.getElementById("gamesView"),libraryView=document.getElementById("libraryView");
+const homeView=document.getElementById("homeView"),loginView=document.getElementById("loginView"),dashboardView=document.getElementById("dashboardView"),gamesView=document.getElementById("gamesView"),libraryView=document.getElementById("libraryView"),childView=document.getElementById("childView");
 const loginStatus=document.getElementById("loginStatus"),loginButton=document.getElementById("loginButton");
-function showView(view){homeView.classList.toggle("hidden",view!=="home");loginView.classList.toggle("hidden",view!=="login");dashboardView.classList.toggle("hidden",view!=="dashboard");gamesView.classList.toggle("hidden",view!=="games");libraryView.classList.toggle("hidden",view!=="library");window.scrollTo({top:0,behavior:"smooth"});}
+function showView(view){homeView.classList.toggle("hidden",view!=="home");loginView.classList.toggle("hidden",view!=="login");dashboardView.classList.toggle("hidden",view!=="dashboard");gamesView.classList.toggle("hidden",view!=="games");libraryView.classList.toggle("hidden",view!=="library");childView.classList.toggle("hidden",view!=="child");window.scrollTo({top:0,behavior:"smooth"});}
+
+document.getElementById("childLink").addEventListener("click",e=>{e.preventDefault();showView("child");});
+document.getElementById("childBackHome").addEventListener("click",()=>showView("home"));
+document.getElementById("closeAvatar").addEventListener("click",()=>showView("home"));
+let selectedAvatar=null;
+const avatarCards=[...document.querySelectorAll(".avatar-card")];
+avatarCards.forEach(card=>card.addEventListener("click",()=>{
+  avatarCards.forEach(item=>item.classList.remove("selected"));
+  card.classList.add("selected");
+  selectedAvatar=card.dataset.avatar;
+  document.getElementById("confirmAvatar").disabled=false;
+  document.getElementById("avatarStatus").textContent="Твій друг — "+selectedAvatar+"! Натисни «Обрати друга».";
+}));
+document.getElementById("confirmAvatar").addEventListener("click",()=>{
+  if(!selectedAvatar)return;
+  document.getElementById("avatarStatus").textContent="Чудовий вибір! Твій друг — "+selectedAvatar+". Це пробний вибір, він поки не зберігається.";
+});
+
 document.getElementById("teacherLink").addEventListener("click",async e=>{e.preventDefault();const {data:{session}}=await supabaseClient.auth.getSession();if(session){showView("dashboard");await loadDashboard();}else{loginStatus.textContent="";showView("login");}});
 document.getElementById("backHome").addEventListener("click",()=>showView("home"));
 document.getElementById("gamesLink").addEventListener("click",e=>{e.preventDefault();showView("games");});
