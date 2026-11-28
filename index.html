@@ -55,6 +55,8 @@ input:focus{outline:2px solid #9bd3ae;border-color:var(--green)}.status{min-heig
 .lesson-description{white-space:pre-wrap;line-height:1.5}
 .lesson-link{display:inline-block;margin-top:12px;font-weight:bold}
 .library-empty{padding:22px;border:1px dashed #cbdccf;border-radius:16px;color:#668071;text-align:center}
+.children-page{max-width:1100px;margin:28px auto;padding:0 20px}.children-hero{padding:26px;border-radius:24px;background:linear-gradient(120deg,#e9f8ec,#fff2df);margin-bottom:20px}.children-layout{display:grid;grid-template-columns:minmax(280px,.8fr) minmax(0,1.2fr);gap:18px;align-items:start}.children-panel{background:#fff;border:1px solid var(--line);border-radius:20px;padding:22px}.children-panel h2{margin-top:0}.child-row{padding:16px;border:1px solid var(--line);border-radius:15px;margin:10px 0;background:#fbfdf9}.child-row strong{font-size:17px}.child-row .note{margin:6px 0!important}.child-link-output{display:block;overflow-wrap:anywhere;margin-top:9px;font-size:13px}.children-empty{padding:20px;border:1px dashed #cbdccf;border-radius:15px;text-align:center;color:#668071}
+@media(max-width:760px){.children-layout{grid-template-columns:1fr}}
 @media(max-width:760px){.library-layout{grid-template-columns:1fr}}
 
 @media(max-width:850px){.games-grid{grid-template-columns:repeat(2,1fr)}}
@@ -124,6 +126,17 @@ input:focus{outline:2px solid #9bd3ae;border-color:var(--green)}.status{min-heig
   </div>
 </section>
 
+<section id="childrenView" class="children-page hidden">
+  <button class="button light games-back" id="childrenBackDashboard" type="button">← До кабінету</button>
+  <div class="children-hero"><p>🌴 Острів знань · Простір учителя</p><h1>👧 Мої вихованці</h1><p>Додавай дітей до групи та створюй для кожної дитини особисте посилання на Острів знань.</p></div>
+  <div class="children-layout">
+    <section class="children-panel"><h2>➕ Додати дитину</h2>
+      <form id="childForm"><label for="childNameInput">Ім’я дитини</label><input id="childNameInput" maxlength="80" required placeholder="Наприклад: Марійка"><button class="button" id="addChildButton" type="submit">Створити профіль і посилання</button><p class="status" id="childFormStatus" role="status" aria-live="polite"></p></form>
+    </section>
+    <section class="children-panel"><h2>🧒 Діти моєї групи</h2><div id="childrenList"><div class="children-empty">Завантажуємо список…</div></div></section>
+  </div>
+</section>
+
 <section id="childView" class="child-page hidden">
   <button class="button light games-back" id="childBackHome" type="button">← На головну</button>
   <div class="child-hero">
@@ -132,18 +145,18 @@ input:focus{outline:2px solid #9bd3ae;border-color:var(--green)}.status{min-heig
     <p>Обери друга, з яким вирушиш у пригоди на острові. Натисни на одного з вільних друзів.</p>
   </div>
   <div class="avatar-grid" id="avatarGrid" aria-label="Обери свого друга">
-    <button class="avatar-card" type="button" data-avatar="Мавпеня"><div class="avatar-picture"><img src="avatars/01_mavpenia.png" alt="Мавпеня"></div><div class="avatar-name">Друг 1 · Мавпеня</div></button>
-    <button class="avatar-card" type="button" data-avatar="Тигреня"><div class="avatar-picture"><img src="avatars/02_tyhrene.png" alt="Тигреня"></div><div class="avatar-name">Друг 2 · Тигреня</div></button>
-    <button class="avatar-card" type="button" data-avatar="Коала"><div class="avatar-picture"><img src="avatars/03_koala.png" alt="Коала"></div><div class="avatar-name">Друг 3 · Коала</div></button>
-    <button class="avatar-card" type="button" data-avatar="Єнот"><div class="avatar-picture"><img src="avatars/04_yenot.png" alt="Єнот"></div><div class="avatar-name">Друг 4 · Єнот</div></button>
-    <button class="avatar-card" type="button" data-avatar="Черепашка"><div class="avatar-picture"><img src="avatars/05_cherepashka.png" alt="Черепашка"></div><div class="avatar-name">Друг 5 · Черепашка</div></button>
-    <button class="avatar-card" type="button" data-avatar="Кенгуру"><div class="avatar-picture"><img src="avatars/06_kenhuru.png" alt="Кенгуру"></div><div class="avatar-name">Друг 6 · Кенгуру</div></button>
-    <button class="avatar-card" type="button" data-avatar="Папуга"><div class="avatar-picture"><img src="avatars/07_papuga.png" alt="Папуга"></div><div class="avatar-name">Друг 7 · Папуга</div></button>
-    <button class="avatar-card" type="button" data-avatar="Левеня"><div class="avatar-picture"><img src="avatars/08_levenia.png" alt="Левеня"></div><div class="avatar-name">Друг 8 · Левеня</div></button>
-    <button class="avatar-card" type="button" data-avatar="Зебра"><div class="avatar-picture"><img src="avatars/09_zebra.png" alt="Зебра"></div><div class="avatar-name">Друг 9 · Зебра</div></button>
-    <button class="avatar-card" type="button" data-avatar="Бегемотик"><div class="avatar-picture"><img src="avatars/10_behemotyk.png" alt="Бегемотик"></div><div class="avatar-name">Друг 10 · Бегемотик</div></button>
-    <button class="avatar-card" type="button" data-avatar="Пінгвін"><div class="avatar-picture"><img src="avatars/11_pinhvin.png" alt="Пінгвін"></div><div class="avatar-name">Друг 11 · Пінгвін</div></button>
-    <button class="avatar-card" type="button" data-avatar="Жирафа"><div class="avatar-picture"><img src="avatars/12_zhyrafa.png" alt="Жирафа"></div><div class="avatar-name">Друг 12 · Жирафа</div></button>
+    <button class="avatar-card" type="button" data-avatar="01_mavpenia"><div class="avatar-picture"><img src="avatars/01_mavpenia.png" alt="Мавпеня"></div><div class="avatar-name">Друг 1 · Мавпеня</div></button>
+    <button class="avatar-card" type="button" data-avatar="02_tyhrene"><div class="avatar-picture"><img src="avatars/02_tyhrene.png" alt="Тигреня"></div><div class="avatar-name">Друг 2 · Тигреня</div></button>
+    <button class="avatar-card" type="button" data-avatar="03_koala"><div class="avatar-picture"><img src="avatars/03_koala.png" alt="Коала"></div><div class="avatar-name">Друг 3 · Коала</div></button>
+    <button class="avatar-card" type="button" data-avatar="04_yenot"><div class="avatar-picture"><img src="avatars/04_yenot.png" alt="Єнот"></div><div class="avatar-name">Друг 4 · Єнот</div></button>
+    <button class="avatar-card" type="button" data-avatar="05_cherepashka"><div class="avatar-picture"><img src="avatars/05_cherepashka.png" alt="Черепашка"></div><div class="avatar-name">Друг 5 · Черепашка</div></button>
+    <button class="avatar-card" type="button" data-avatar="06_kenhuru"><div class="avatar-picture"><img src="avatars/06_kenhuru.png" alt="Кенгуру"></div><div class="avatar-name">Друг 6 · Кенгуру</div></button>
+    <button class="avatar-card" type="button" data-avatar="07_papuga"><div class="avatar-picture"><img src="avatars/07_papuga.png" alt="Папуга"></div><div class="avatar-name">Друг 7 · Папуга</div></button>
+    <button class="avatar-card" type="button" data-avatar="08_levenia"><div class="avatar-picture"><img src="avatars/08_levenia.png" alt="Левеня"></div><div class="avatar-name">Друг 8 · Левеня</div></button>
+    <button class="avatar-card" type="button" data-avatar="09_zebra"><div class="avatar-picture"><img src="avatars/09_zebra.png" alt="Зебра"></div><div class="avatar-name">Друг 9 · Зебра</div></button>
+    <button class="avatar-card" type="button" data-avatar="10_behemotyk"><div class="avatar-picture"><img src="avatars/10_behemotyk.png" alt="Бегемотик"></div><div class="avatar-name">Друг 10 · Бегемотик</div></button>
+    <button class="avatar-card" type="button" data-avatar="11_pinhvin"><div class="avatar-picture"><img src="avatars/11_pinhvin.png" alt="Пінгвін"></div><div class="avatar-name">Друг 11 · Пінгвін</div></button>
+    <button class="avatar-card" type="button" data-avatar="12_zhyrafa"><div class="avatar-picture"><img src="avatars/12_zhyrafa.png" alt="Жирафа"></div><div class="avatar-name">Друг 12 · Жирафа</div></button>
   </div>
   <div class="avatar-actions">
     <button class="button" id="confirmAvatar" type="button" disabled>Обрати друга</button>
@@ -160,7 +173,7 @@ input:focus{outline:2px solid #9bd3ae;border-color:var(--green)}.status{min-heig
 <p class="status" id="loginStatus" role="status" aria-live="polite"></p><p class="note">Реєстрація на сайті закрита. Доступ призначений для власника навчальної групи.</p></div></section>
 <section id="dashboardView" class="dashboard hidden"><div class="dash-head"><div><p>🌴 Особистий простір учителя</p><h1>Вітаємо, Тетяна Володимирівна!</h1><div id="groupName">Завантажуємо дані групи…</div></div>
 <div class="top-actions"><button class="button light" id="openLibraryFromDashboard">📚 Бібліотека занять</button><button class="button light" id="openGamesFromDashboard">🎮 Навчальні ігри</button><button class="button light" id="refreshDashboard">Оновити</button><button class="button" id="logoutButton">Вийти</button></div></div>
-<div class="dash-grid"><article class="dash-card mint"><h3>👧 Моя група</h3><div class="metric" id="childrenCount">—</div><p>Дітей у групі</p></article>
+<div class="dash-grid"><article class="dash-card mint"><h3>👧 Моя група</h3><div class="metric" id="childrenCount">—</div><p>Дітей у групі</p><button class="button light" id="openChildrenCard">Мої вихованці</button></article>
 <article class="dash-card lilac"><h3>📚 Заняття</h3><div class="metric" id="lessonsCount">0</div><p>Збережені заняття</p><button class="button light" id="openLibraryCard">Відкрити бібліотеку</button></article>
 <article class="dash-card peach"><h3>🎮 Ігри</h3><div class="metric">0</div><p>Навчальні ігри</p><p class="note">Тут з’являться ігри для дітей.</p></article>
 <article class="dash-card lilac"><h3>🖍️ Роботи дітей</h3><p>Перегляд і перевірка дитячих робіт.</p></article>
@@ -173,25 +186,34 @@ input:focus{outline:2px solid #9bd3ae;border-color:var(--green)}.status{min-heig
 const SUPABASE_URL="https://ihflezshqjtwdmwvqcvi.supabase.co";
 const SUPABASE_PUBLISHABLE_KEY="sb_publishable_0aVHjb09aSiieOgdXm9qBg_joJDy3Ea";
 const supabaseClient=window.supabase.createClient(SUPABASE_URL,SUPABASE_PUBLISHABLE_KEY);
-const homeView=document.getElementById("homeView"),loginView=document.getElementById("loginView"),dashboardView=document.getElementById("dashboardView"),gamesView=document.getElementById("gamesView"),libraryView=document.getElementById("libraryView"),childView=document.getElementById("childView");
+const homeView=document.getElementById("homeView"),loginView=document.getElementById("loginView"),dashboardView=document.getElementById("dashboardView"),gamesView=document.getElementById("gamesView"),libraryView=document.getElementById("libraryView"),childrenView=document.getElementById("childrenView"),childView=document.getElementById("childView");
 const loginStatus=document.getElementById("loginStatus"),loginButton=document.getElementById("loginButton");
-function showView(view){homeView.classList.toggle("hidden",view!=="home");loginView.classList.toggle("hidden",view!=="login");dashboardView.classList.toggle("hidden",view!=="dashboard");gamesView.classList.toggle("hidden",view!=="games");libraryView.classList.toggle("hidden",view!=="library");childView.classList.toggle("hidden",view!=="child");window.scrollTo({top:0,behavior:"smooth"});}
+function showView(view){homeView.classList.toggle("hidden",view!=="home");loginView.classList.toggle("hidden",view!=="login");dashboardView.classList.toggle("hidden",view!=="dashboard");gamesView.classList.toggle("hidden",view!=="games");libraryView.classList.toggle("hidden",view!=="library");childrenView.classList.toggle("hidden",view!=="children");childView.classList.toggle("hidden",view!=="child");window.scrollTo({top:0,behavior:"smooth"});}
 
 document.getElementById("childLink").addEventListener("click",e=>{e.preventDefault();showView("child");});
 document.getElementById("childBackHome").addEventListener("click",()=>showView("home"));
 document.getElementById("closeAvatar").addEventListener("click",()=>showView("home"));
 let selectedAvatar=null;
 const avatarCards=[...document.querySelectorAll(".avatar-card")];
+const avatarLabels={"01_mavpenia":"Мавпеня","02_tyhrene":"Тигреня","03_koala":"Коала","04_yenot":"Єнот","05_cherepashka":"Черепашка","06_kenhuru":"Кенгуру","07_papuga":"Папуга","08_levenia":"Левеня","09_zebra":"Зебра","10_behemotyk":"Бегемотик","11_pinhvin":"Пінгвін","12_zhyrafa":"Жирафа"};
+const childToken=new URLSearchParams(window.location.search).get("child");
+if(childToken){showView("child");document.getElementById("childBackHome").classList.add("hidden");document.getElementById("closeAvatar").classList.add("hidden");document.getElementById("avatarStatus").textContent="Обери друга для пригод! Твій вибір збережеться в профілі.";}
 avatarCards.forEach(card=>card.addEventListener("click",()=>{
   avatarCards.forEach(item=>item.classList.remove("selected"));
-  card.classList.add("selected");
-  selectedAvatar=card.dataset.avatar;
+  card.classList.add("selected");selectedAvatar=card.dataset.avatar;
   document.getElementById("confirmAvatar").disabled=false;
-  document.getElementById("avatarStatus").textContent="Твій друг — "+selectedAvatar+"! Натисни «Обрати друга».";
+  document.getElementById("avatarStatus").textContent="Твій друг — "+avatarLabels[selectedAvatar]+"! Натисни «Обрати друга».";
 }));
-document.getElementById("confirmAvatar").addEventListener("click",()=>{
+document.getElementById("confirmAvatar").addEventListener("click",async()=>{
   if(!selectedAvatar)return;
-  document.getElementById("avatarStatus").textContent="Чудовий вибір! Твій друг — "+selectedAvatar+". Це пробний вибір, він поки не зберігається.";
+  const button=document.getElementById("confirmAvatar"),status=document.getElementById("avatarStatus");
+  if(!childToken){status.textContent="Це пробний вибір. Для збереження потрібне особисте посилання.";return;}
+  button.disabled=true;status.textContent="Зберігаємо твого друга…";
+  try{
+    const {data,error}=await supabaseClient.functions.invoke("save-child-avatar",{body:{token:childToken,avatar_key:selectedAvatar}});
+    if(error||!data?.success){status.textContent=data?.error||"Не вдалося зберегти вибір. Перевір посилання та спробуй ще раз.";button.disabled=false;return;}
+    status.textContent="Чудовий вибір! Твій друг — "+avatarLabels[selectedAvatar]+". Ми його зберегли!";
+  }catch(err){status.textContent="Не вдалося з’єднатися із сервером. Спробуй ще раз.";button.disabled=false;}
 });
 
 document.getElementById("teacherLink").addEventListener("click",async e=>{e.preventDefault();const {data:{session}}=await supabaseClient.auth.getSession();if(session){showView("dashboard");await loadDashboard();}else{loginStatus.textContent="";showView("login");}});
@@ -211,6 +233,44 @@ const group=groups[0];currentGroupId=group.id;document.getElementById("groupName
 const {count,error:childrenError}=await supabaseClient.from("child_profiles").select("id",{count:"exact",head:true}).eq("group_id",group.id).eq("is_active",true);
 if(childrenError){document.getElementById("childrenCount").textContent="—";status.textContent="Групу завантажено. Кількість дітей поки недоступна: "+childrenError.message;}
 else{document.getElementById("childrenCount").textContent=count??0;status.textContent="Дані групи успішно завантажено.";}}
+
+async function openChildren(){showView("children");document.getElementById("childFormStatus").textContent="";await loadChildren();}
+async function loadChildren(){
+ const list=document.getElementById("childrenList");
+ if(!currentGroupId){list.innerHTML='<div class="children-empty">Спочатку завантаж групу в кабінеті вчителя.</div>';return;}
+ list.innerHTML='<div class="children-empty">Завантажуємо список…</div>';
+ const {data,error}=await supabaseClient.from("child_profiles").select("id,child_name,avatar_key,created_at").eq("group_id",currentGroupId).eq("is_active",true).order("created_at",{ascending:true});
+ if(error){list.textContent="Не вдалося завантажити список дітей: "+error.message;return;}
+ if(!data?.length){list.innerHTML='<div class="children-empty">Поки що дітей немає. Додай перший профіль.</div>';return;}
+ list.innerHTML=data.map(child=>`<article class="child-row"><strong>${escapeLessonText(child.child_name)}</strong><p class="note">${child.avatar_key?"Друг: "+escapeLessonText(avatarLabels[child.avatar_key]||child.avatar_key):"Друг ще не обраний"}</p></article>`).join("");
+}
+document.getElementById("childForm").addEventListener("submit",async e=>{
+ e.preventDefault();
+ const button=document.getElementById("addChildButton"),status=document.getElementById("childFormStatus");
+ const childName=document.getElementById("childNameInput").value.trim();
+ if(!currentGroupId){status.textContent="Не знайдено групу. Повернися до кабінету й онови дані.";return;}
+ if(!childName){status.textContent="Введи ім’я дитини.";return;}
+ button.disabled=true;status.textContent="Створюємо профіль…";
+ try{
+   const {data:profile,error:profileError}=await supabaseClient.from("child_profiles").insert({group_id:currentGroupId,child_name:childName,avatar_key:null,is_active:true}).select("id").single();
+   if(profileError||!profile){status.textContent="Не вдалося створити профіль: "+(profileError?.message||"невідома помилка");button.disabled=false;return;}
+   status.textContent="Створюємо особисте посилання…";
+   const {data:linkData,error:linkError}=await supabaseClient.functions.invoke("create-child-access-link",{body:{child_profile_id:profile.id}});
+   if(linkError||!linkData?.success||!linkData?.access_token){status.textContent="Профіль створено, але посилання не вдалося створити: "+(linkData?.error||linkError?.message||"невідома помилка");button.disabled=false;await loadChildren();return;}
+   const personalUrl=new URL(window.location.href);personalUrl.search="";personalUrl.hash="";personalUrl.searchParams.set("child",linkData.access_token);
+   status.textContent="Профіль створено. Особисте посилання готове — передай його родині.";
+   const linkBox=document.createElement("div");linkBox.className="child-row";
+   const linkTitle=document.createElement("strong");linkTitle.textContent="Особисте посилання для "+childName;
+   const linkAnchor=document.createElement("a");linkAnchor.className="child-link-output";linkAnchor.href=personalUrl.toString();linkAnchor.target="_blank";linkAnchor.rel="noopener noreferrer";linkAnchor.textContent=personalUrl.toString();
+   const copyButton=document.createElement("button");copyButton.type="button";copyButton.className="button light";copyButton.textContent="Скопіювати посилання";
+   copyButton.addEventListener("click",async()=>{try{await navigator.clipboard.writeText(personalUrl.toString());copyButton.textContent="Скопійовано!";}catch{copyButton.textContent="Виділи посилання та скопіюй";}});
+   linkBox.append(linkTitle,linkAnchor,copyButton);status.after(linkBox);
+   document.getElementById("childForm").reset();await loadChildren();
+ }catch(err){status.textContent="Сталася помилка під час створення профілю.";}
+ button.disabled=false;
+});
+document.getElementById("openChildrenCard").addEventListener("click",openChildren);
+document.getElementById("childrenBackDashboard").addEventListener("click",async()=>{showView("dashboard");await loadDashboard();});
 
 let currentGroupId=null;
 async function openLibrary(){showView("library");document.getElementById("lessonStatus").textContent="";await loadLessons();}
@@ -242,6 +302,6 @@ document.getElementById("openGamesFromDashboard").addEventListener("click",()=>s
 document.getElementById("refreshDashboard").addEventListener("click",loadDashboard);
 document.getElementById("logoutButton").addEventListener("click",async()=>{await supabaseClient.auth.signOut();showView("home");});
 supabaseClient.auth.onAuthStateChange((_event,session)=>{if(session&&!dashboardView.classList.contains("hidden"))loadDashboard();});
-(async()=>{const {data:{session}}=await supabaseClient.auth.getSession();if(session){showView("dashboard");await loadDashboard();}})();
+(async()=>{if(childToken)return;const {data:{session}}=await supabaseClient.auth.getSession();if(session){showView("dashboard");await loadDashboard();}})();
 </script>
 </body></html>
