@@ -252,7 +252,7 @@ document.getElementById("childForm").addEventListener("submit",async e=>{
  if(!childName){status.textContent="Введи ім’я дитини.";return;}
  button.disabled=true;status.textContent="Створюємо профіль…";
  try{
-   const {data:profile,error:profileError}=await supabaseClient.from("child_profiles").insert({group_id:currentGroupId,child_name:childName,avatar_key:null,is_active:true}).select("id").single();
+   const {data:profile,error:profileError}=await supabaseClient.from("child_profiles").insert({group_id:currentGroupId,child_name:childName,avatar_key:"01_mavpenia",is_active:true}).select("id").single();
    if(profileError||!profile){status.textContent="Не вдалося створити профіль: "+(profileError?.message||"невідома помилка");button.disabled=false;return;}
    status.textContent="Створюємо особисте посилання…";
    const {data:linkData,error:linkError}=await supabaseClient.functions.invoke("create-child-access-link",{body:{child_profile_id:profile.id}});
